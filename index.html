@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>스마트 영양성분 & 칼로리 계산기</title>
-  <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-  <script src="[https://cdn.jsdelivr.net/npm/chart.js](https://cdn.jsdelivr.net/npm/chart.js)"></script>
-  <script src="[https://unpkg.com/lucide@latest](https://unpkg.com/lucide@latest)"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    @import url('[https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css](https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css)');
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
     body { font-family: 'Pretendard', -apple-system, sans-serif; }
   </style>
 </head>
@@ -132,7 +132,6 @@
     </div>
   </main>
 
-  <!-- Guide Modal -->
   <div id="guideModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
     <div class="bg-white w-full max-w-sm rounded-2xl p-5 space-y-4 shadow-xl max-h-[85vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b pb-2.5">
@@ -143,35 +142,24 @@
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
-
       <div class="space-y-4 text-xs text-slate-600 leading-relaxed">
         <div class="space-y-1.5">
           <h4 class="font-bold text-slate-800 text-sm flex items-center gap-1">
             <span class="bg-emerald-600 text-white rounded-full w-4 h-4 inline-flex items-center justify-center text-[10px]">1</span> 신체 정보 등록 및 목표 설정
           </h4>
-          <p class="pl-5">우측 상단 <strong>프로필 아이콘</strong>을 눌러 키, 몸무게, 나이, 활동량을 입력하세요. 하루 권장 칼로리 및 탄·단·지 비율을 자동 계산해 드립니다.</p>
+          <p class="pl-5">우측 상단 프로필 아이콘을 눌러 키, 몸무게, 나이, 활동량을 입력하세요.</p>
         </div>
         <div class="space-y-1.5">
           <h4 class="font-bold text-slate-800 text-sm flex items-center gap-1">
             <span class="bg-emerald-600 text-white rounded-full w-4 h-4 inline-flex items-center justify-center text-[10px]">2</span> 자유로운 식단 기록
           </h4>
-          <p class="pl-5">음식 이름과 양을 자연스럽게 입력하세요.<br><strong>예시:</strong> "제육볶음 1공기", "삼겹살 200g", "떡볶이 1인분"</p>
-        </div>
-        <div class="space-y-1.5">
-          <h4 class="font-bold text-slate-800 text-sm flex items-center gap-1">
-            <span class="bg-emerald-600 text-white rounded-full w-4 h-4 inline-flex items-center justify-center text-[10px]">3</span> 스마트 영양 추정
-          </h4>
-          <p class="pl-5">입력된 음식을 분석하여 자동으로 칼로리와 탄/단/지 영양 성분을 추정하여 기록해 드립니다.</p>
+          <p class="pl-5">음식 이름과 양을 입력하면 자동으로 영양이 계산됩니다.</p>
         </div>
       </div>
-
-      <button id="guideConfirmBtn" type="button" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl transition text-xs mt-2">
-        확인했습니다
-      </button>
+      <button id="guideConfirmBtn" type="button" class="w-full bg-emerald-600 text-white font-bold py-2.5 rounded-xl transition text-xs">확인했습니다</button>
     </div>
   </div>
 
-  <!-- Profile Modal -->
   <div id="profileModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
     <div class="bg-white w-full max-w-sm rounded-2xl p-5 space-y-4 shadow-xl">
       <div class="flex justify-between items-center border-b pb-2">
@@ -182,131 +170,5 @@
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
-
       <form id="profileForm" class="space-y-3 text-xs">
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <label class="block font-medium text-slate-600 mb-1">성별</label>
-            <select id="userGender" class="w-full bg-slate-50 border rounded-lg p-2 outline-none">
-              <option value="male">남성</option>
-              <option value="female">여성</option>
-            </select>
-          </div>
-          <div>
-            <label class="block font-medium text-slate-600 mb-1">나이 (세)</label>
-            <input type="number" id="userAge" value="25" class="w-full bg-slate-50 border rounded-lg p-2 outline-none" required>
-          </div>
-        </div>
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <label class="block font-medium text-slate-600 mb-1">키 (cm)</label>
-            <input type="number" id="userHeight" value="170" class="w-full bg-slate-50 border rounded-lg p-2 outline-none" required>
-          </div>
-          <div>
-            <label class="block font-medium text-slate-600 mb-1">몸무게 (kg)</label>
-            <input type="number" id="userWeight" value="65" class="w-full bg-slate-50 border rounded-lg p-2 outline-none" required>
-          </div>
-        </div>
-        <div>
-          <label class="block font-medium text-slate-600 mb-1">활동량</label>
-          <select id="userActivity" class="w-full bg-slate-50 border rounded-lg p-2 outline-none">
-            <option value="1.2">주로 앉아서 생활함 (운동 거의 안 함)</option>
-            <option value="1.375">가벼운 활동 (주 1~3회 운동)</option>
-            <option value="1.55" selected>보통 활동 (주 3~5회 운동)</option>
-            <option value="1.725">보통 이상 활동 (주 6~7회 운동)</option>
-            <option value="1.9">매우 왕성한 활동 (고강도 운동/육체 노동)</option>
-          </select>
-        </div>
-        <div>
-          <label class="block font-medium text-slate-600 mb-1">다이어트 목표</label>
-          <select id="userGoal" class="w-full bg-slate-50 border rounded-lg p-2 outline-none">
-            <option value="loss">체중 감량 (-500 kcal)</option>
-            <option value="maintain" selected>현재 체중 유지</option>
-            <option value="gain">체중 증량 (+300 kcal)</option>
-          </select>
-        </div>
-        <div class="bg-emerald-50 p-3 rounded-lg text-emerald-800 space-y-1 mt-2">
-          <div class="flex justify-between">
-            <span>기초 대사량(BMR):</span>
-            <span id="calculatedBMR" class="font-bold">1600 kcal</span>
-          </div>
-          <div class="flex justify-between font-bold text-sm text-emerald-900 border-t border-emerald-200/60 pt-1">
-            <span>하루 권장 목표:</span>
-            <span id="calculatedTDEE">2000 kcal</span>
-          </div>
-        </div>
-        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl shadow transition text-sm">
-          설정 저장하기
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    const foodDatabase = {
-      '쌀밥': { cal: 300, carbs: 65, protein: 6, fat: 1 },
-      '백미밥': { cal: 300, carbs: 65, protein: 6, fat: 1 },
-      '현미밥': { cal: 280, carbs: 58, protein: 7, fat: 2 },
-      '잡곡밥': { cal: 290, carbs: 60, protein: 7, fat: 2 },
-      '볶음밥': { cal: 520, carbs: 72, protein: 12, fat: 18 },
-      '김치볶음밥': { cal: 500, carbs: 70, protein: 11, fat: 16 },
-      '비빔밥': { cal: 560, carbs: 82, protein: 18, fat: 15 },
-      '김밥': { cal: 480, carbs: 75, protein: 14, fat: 12 },
-      '라면': { cal: 520, carbs: 76, protein: 10, fat: 18 },
-      '짜장면': { cal: 670, carbs: 105, protein: 18, fat: 20 },
-      '짬뽕': { cal: 560, carbs: 86, protein: 21, fat: 15 },
-      '떡볶이': { cal: 380, carbs: 78, protein: 8, fat: 4 },
-      '제육볶음': { cal: 380, carbs: 14, protein: 28, fat: 22 },
-      '닭가슴살': { cal: 165, carbs: 0, protein: 31, fat: 3.6 },
-      '삼겹살': { cal: 520, carbs: 0, protein: 24, fat: 46 },
-      '돈까스': { cal: 650, carbs: 52, protein: 26, fat: 34 },
-      '치킨': { cal: 310, carbs: 16, protein: 22, fat: 18 },
-      '피자': { cal: 290, carbs: 32, protein: 13, fat: 12 },
-      '햄버거': { cal: 520, carbs: 46, protein: 24, fat: 26 },
-      '김치찌개': { cal: 210, carbs: 11, protein: 16, fat: 11 },
-      '된장찌개': { cal: 160, carbs: 13, protein: 13, fat: 6 },
-      '순두부찌개': { cal: 230, carbs: 10, protein: 17, fat: 13 },
-      '계란후라이': { cal: 90, carbs: 0.4, protein: 6, fat: 7 },
-      '샐러드': { cal: 120, carbs: 10, protein: 3, fat: 7 },
-      '아메리카노': { cal: 10, carbs: 1, protein: 0.5, fat: 0 },
-      '카페라떼': { cal: 180, carbs: 14, protein: 8, fat: 9 }
-    };
-
-    let userProfile = JSON.parse(localStorage.getItem('cal_user_profile')) || {
-      gender: 'male', age: 25, height: 170, weight: 65, activity: 1.55, goal: 'maintain',
-      targetCal: 2000, targetCarbs: 250, targetProtein: 100, targetFat: 55
-    };
-
-    let selectedDate = new Date().toISOString().split('T')[0];
-    let mealLogs = JSON.parse(localStorage.getItem('cal_meal_logs')) || {};
-
-    function calculateBodyMetrics() {
-      const g = document.getElementById('userGender').value;
-      const age = parseFloat(document.getElementById('userAge').value) || 25;
-      const h = parseFloat(document.getElementById('userHeight').value) || 170;
-      const w = parseFloat(document.getElementById('userWeight').value) || 65;
-      const act = parseFloat(document.getElementById('userActivity').value) || 1.55;
-      const goal = document.getElementById('userGoal').value;
-
-      let bmr = (10 * w) + (6.25 * h) - (5 * age);
-      bmr += (g === 'male') ? 5 : -161;
-
-      let tdee = bmr * act;
-      if (goal === 'loss') tdee -= 500;
-      if (goal === 'gain') tdee += 300;
-
-      tdee = Math.max(1200, Math.round(tdee));
-
-      const carbsG = Math.round((tdee * 0.5) / 4);
-      const proteinG = Math.round((tdee * 0.25) / 4);
-      const fatG = Math.round((tdee * 0.25) / 9);
-
-      document.getElementById('calculatedBMR').innerText = `${Math.round(bmr)} kcal`;
-      document.getElementById('calculatedTDEE').innerText = `${tdee} kcal`;
-
-      return { gender: g, age, height: h, weight: w, activity: act, goal, targetCal: tdee, targetCarbs: carbsG, targetProtein: proteinG, targetFat: fatG };
-    }
-
-    let chartInstance = null;
-    function initChart() {
-      const ctx = document.getElementById('calDoughnutChart').getContext('2
+        <div class="grid grid-cols-
